@@ -12,8 +12,9 @@ INSTALL_DIR="$(pwd)"
 cp "$INSTALL_DIR/.env.template" "$INSTALL_DIR/.env"
 sed -i "s/^USER_ID=.*/USER_ID=$USER_ID/" "$INSTALL_DIR/.env"
 
-# Move a pasta wsdl para /temp/wsdl, criando /temp se necessário
+# Move a pasta wsdl para /temp/wsdl, sobrescrevendo se já existir
 [ -d /temp ] || mkdir /temp
+rm -rf /temp/wsdl
 mv "$INSTALL_DIR/wsdl" /temp/wsdl
 
 # Executa o script de instalação dos serviços
