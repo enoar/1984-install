@@ -47,6 +47,14 @@ sudo cp "$INSTALL_DIR/.env" /opt/1984-deny/.env
 rm -rf /tmp/wsdl
 cp -r "$INSTALL_DIR/wsdl" /tmp/wsdl
 
+# Garante que o ffmpeg esteja instalado
+if ! command -v ffmpeg >/dev/null 2>&1; then
+    echo "🔧 Instalando ffmpeg..."
+    sudo apt-get update && sudo apt-get install -y ffmpeg
+else
+    echo "ffmpeg já está instalado."
+fi
+
 # Executa o script de instalação dos serviços
 bash "$INSTALL_DIR/install.sh"
 
