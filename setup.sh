@@ -18,7 +18,6 @@ sudo cp "$INSTALL_DIR/.env" /opt/1984-deny/.env
 
 # Move a pasta wsdl para /temp/wsdl, sobrescrevendo se já existir
 [ -d /temp ] || mkdir /temp
-rm -rf /temp/wsdl
 cp -r "$INSTALL_DIR/wsdl" /temp/wsdl
 
 # Executa o script de instalação dos serviços
