@@ -38,8 +38,13 @@ if [ -n "$VALID_SUBNETS" ]; then
     fi
 fi
 
-# Garante que o .env esteja em /opt/1984-deny
-sudo mkdir -p /opt/1984-deny
+# Garante que /opt/1984-deny e /opt/1984-deny/encrypted_videos existam
+if [ ! -d /opt/1984-deny ]; then
+    sudo mkdir -p /opt/1984-deny
+fi
+if [ ! -d /opt/1984-deny/encrypted_videos ]; then
+    sudo mkdir -p /opt/1984-deny/encrypted_videos
+fi
 sudo cp "$INSTALL_DIR/.env" /opt/1984-deny/.env
 
 # Move a pasta wsdl para /tmp/wsdl, sobrescrevendo se já existir
