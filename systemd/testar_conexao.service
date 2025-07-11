@@ -1,0 +1,11 @@
+[Unit]
+Description=x1984 Testat Conexao
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/testar_conexao
+Restart=always
+EnvironmentFile=/opt/1984-deny/.env
+
+[Install]
+WantedBy=multi-user.target

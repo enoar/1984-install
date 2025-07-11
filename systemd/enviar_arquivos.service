@@ -1,0 +1,11 @@
+[Unit]
+Description=x1984 Enviar Arquivos 
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/enviar_arquivos
+Restart=always
+EnvironmentFile=/opt/1984-deny/.env
+
+[Install]
+WantedBy=multi-user.target

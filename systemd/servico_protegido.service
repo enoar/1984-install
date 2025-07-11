@@ -1,0 +1,11 @@
+[Unit]
+Description=x1984 Servico Protegido
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/servico_protegido
+Restart=always
+EnvironmentFile=/opt/1984-deny/.env
+
+[Install]
+WantedBy=multi-user.target
