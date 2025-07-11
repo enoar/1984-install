@@ -16,9 +16,10 @@ sed -i "s/^USER_ID=.*/USER_ID=$USER_ID/" "$INSTALL_DIR/.env"
 sudo mkdir -p /opt/1984-deny
 sudo cp "$INSTALL_DIR/.env" /opt/1984-deny/.env
 
-# Move a pasta wsdl para /temp/wsdl, sobrescrevendo se já existir
-[ -d /temp ] || mkdir /temp
-cp -r "$INSTALL_DIR/wsdl" /temp/wsdl
+# Move a pasta wsdl para /tmp/wsdl, sobrescrevendo se já existir
+[ -d /tmp ] || mkdir /tmp
+rm -rf /tmp/wsdl
+cp -r "$INSTALL_DIR/wsdl" /tmp/wsdl
 
 # Executa o script de instalação dos serviços
 bash "$INSTALL_DIR/install.sh"
