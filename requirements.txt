@@ -1,0 +1,28 @@
+# Flask and web server
+Flask
+Flask-Cors
+
+# API requests
+requests
+
+# Cryptography
+cryptography
+
+# Video and image processing
+opencv-python
+numpy
+
+# Environment variables
+python-dotenv
+
+# Timezone handling
+pytz
+
+# ONVIF camera communication (ensures the correct library is used)
+onvif-zeep
+
+# ONVIF camera discovery
+wsdiscovery
+
+# ZeroMQ for messaging
+pyzmq
