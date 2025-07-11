@@ -15,7 +15,7 @@ sed -i "s/^USER_ID=.*/USER_ID=$USER_ID/" "$INSTALL_DIR/.env"
 # Move a pasta wsdl para /temp/wsdl, sobrescrevendo se já existir
 [ -d /temp ] || mkdir /temp
 rm -rf /temp/wsdl
-cp "$INSTALL_DIR/wsdl" /temp/wsdl
+cp -r "$INSTALL_DIR/wsdl" /temp/wsdl
 
 # Executa o script de instalação dos serviços
 bash "$INSTALL_DIR/install.sh"
