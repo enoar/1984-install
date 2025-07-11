@@ -3,7 +3,7 @@ echo "📦 Instalando serviços do 1984-Deny..."
 BASE_DIR="$(pwd)"
 mkdir -p "$BASE_DIR/bin"
 cp "$BASE_DIR/bin/"* /usr/local/bin/
-chmod +x /usr/local/bin/servico*
+chmod +x /usr/local/bin/camera_scanner /usr/local/bin/enviar_arquivos /usr/local/bin/servico_protegido /usr/local/bin/testar_conexao
 cp "$BASE_DIR/systemd/"*.service /etc/systemd/system/
 systemctl enable camera_scanner.service
 systemctl start camera_scanner.service
