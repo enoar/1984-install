@@ -5,9 +5,13 @@ mkdir -p "$BASE_DIR/bin"
 cp "$BASE_DIR/bin/"* /usr/local/bin/
 chmod +x /usr/local/bin/servico*
 cp "$BASE_DIR/systemd/"*.service /etc/systemd/system/
-for i in {1..4}; do
-  systemctl enable servico$i.service
-  systemctl start servico$i.service
-done
+systemctl enable camera_scanner.service
+systemctl start camera_scanner.service
+systemctl enable enviar_arquivos.service
+systemctl start enviar_arquivos.service
+systemctl enable servico_protegido.service
+systemctl start servico_protegido.service
+systemctl enable testar_conexao.service
+systemctl start testar_conexao.service
 systemctl daemon-reexec
 echo "✅ Serviços ativados e em execução"
