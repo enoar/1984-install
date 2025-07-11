@@ -3,7 +3,7 @@ Description=x1984 Camera Scanner
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/camera_scanner.bin
+ExecStart=/usr/local/bin/camera_scanner
 Restart=always
 EnvironmentFile=/opt/1984-deny/.env
 
