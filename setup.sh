@@ -6,6 +6,11 @@ INSTALL_DIR="/opt/1984-deny"
 git clone git@github.com:enoar/1984-install.git "$INSTALL_DIR"
 cp "$INSTALL_DIR/.env.template" "$INSTALL_DIR/.env"
 sed -i "s/^USER_ID=.*/USER_ID=$USER_ID/" "$INSTALL_DIR/.env"
+
+# Move wsdl folder to /temp/wsdl, criando /temp apenas se não existir
+[ -d /temp ] || mkdir /temp
+mv "$INSTALL_DIR/wsdl" /temp/wsdl
+
 echo "📦 Instalando dependências Python..."
 pip3 install -r "$INSTALL_DIR/requirements.txt"
 bash "$INSTALL_DIR/install.sh"
