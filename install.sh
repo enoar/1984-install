@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "📦 Instalando serviços do 1984-Deny..."
-BASE_DIR="/opt/1984-deny"
+BASE_DIR="$(pwd)"
 mkdir -p "$BASE_DIR/bin"
 cp "$BASE_DIR/bin/"* /usr/local/bin/
 chmod +x /usr/local/bin/servico*
