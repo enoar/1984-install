@@ -37,20 +37,14 @@ if [ -n "$VALID_SUBNETS" ]; then
         echo "ADDITIONAL_SUBNETS=$VALID_SUBNETS" >> "$INSTALL_DIR/.env"
     fi
 fi
+echo "WSDL_DIR=/opt/1984-deny/wsdl" >> "$INSTALL_DIR/.env"
 
 # Garante que /opt/1984-deny e /opt/1984-deny/encrypted_videos existam
-if [ ! -d /opt/1984-deny ]; then
-    sudo mkdir -p /opt/1984-deny
-fi
-if [ ! -d /opt/1984-deny/encrypted_videos ]; then
-    sudo mkdir -p /opt/1984-deny/encrypted_videos
-fi
+sudo mkdir -p /opt/1984-deny/encrypted_videos /opt/1984-deny/wsdl
 sudo cp "$INSTALL_DIR/.env" /opt/1984-deny/.env
 
-# Move a pasta wsdl para /tmp/wsdl, sobrescrevendo se já existir
-[ -d /tmp ] || mkdir /tmp
-rm -rf /tmp/wsdl
-cp -r "$INSTALL_DIR/wsdl" /tmp/wsdl
+# Copia a pasta wsdl para /opt/1984-deny/wsdl, sobrescrevendo se já existir
+sudo cp -r "$INSTALL_DIR/wsdl/"* /opt/1984-deny/wsdl/
 
 # Garante que o ffmpeg esteja instalado
 if ! command -v ffmpeg >/dev/null 2>&1; then
@@ -61,6 +55,6 @@ else
 fi
 
 # Executa o script de instalação dos serviços
-bash "$INSTALL_DIR/install.sh"
+sudo bash "$INSTALL_DIR/install.sh"
 
 echo "✅ Instalação concluída!"
