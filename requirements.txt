@@ -1,0 +1,2 @@
+python-dateutil
+# Adicione outras dependências do Python aqui, uma por linha.
