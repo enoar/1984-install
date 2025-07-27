@@ -60,7 +60,17 @@ else
     echo "ffmpeg já está instalado."
 fi
 
+# Garante que as dependências do Python estejam instaladas
+echo "🐍 Verificando e instalando dependências do Python..."
+if ! command -v pip3 >/dev/null 2>&1; then
+    echo "pip3 não encontrado. Instalando python3-pip..."
+    sudo apt-get update && sudo apt-get install -y python3-pip
+else
+    echo "pip3 já está instalado."
+fi
+sudo pip3 install -r "$INSTALL_DIR/requirements.txt"
+
 # Executa o script de instalação dos serviços
-bash "$INSTALL_DIR/install.sh"
+sudo bash "$INSTALL_DIR/install.sh"
 
 echo "✅ Instalação concluída!"
