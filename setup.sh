@@ -8,6 +8,9 @@ read -p "Digite o USER_ID do cliente: " USER_ID
 # Pergunta sobre subnets adicionais
 read -p "As cameras rodam em uma subnet diferente? Se sim informe aqui, se for mais de uma separe por virgulas (exemplo: 192.168.0.1/24,10.0.0.1/24): " ADDITIONAL_SUBNETS
 
+# Pergunta sobre o serviço opcional
+read -p "Deseja instalar o serviço de reunião protegida? (s/N): " INSTALL_REUNIAO
+
 # Valida e formata as subnets
 VALID_SUBNETS=""
 if [ -n "$ADDITIONAL_SUBNETS" ]; then
@@ -70,7 +73,13 @@ else
 fi
 sudo pip3 install -r "$INSTALL_DIR/requirements.txt"
 
+# Prepara os argumentos para o script de instalação
+INSTALL_ARGS=""
+if [[ "$INSTALL_REUNIAO" =~ ^[sS]([iI][mM])?$ ]]; then
+    INSTALL_ARGS="--install-reuniao"
+fi
+
 # Executa o script de instalação dos serviços
-sudo bash "$INSTALL_DIR/install.sh"
+sudo bash "$INSTALL_DIR/install.sh" $INSTALL_ARGS
 
 echo "✅ Instalação concluída!"
